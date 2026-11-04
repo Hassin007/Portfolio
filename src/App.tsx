@@ -6,6 +6,7 @@ import Hero from "./components/Hero";
 import About from "./components/About";
 import Experience from "./components/Experience";
 import AcademicFoundations from "./components/AcademicFoundations";
+import Certifications from "./components/Certifications";
 import Projects from "./components/Projects";
 import Skills from "./components/Skills";
 import Contact from "./components/Contact";
@@ -37,7 +38,7 @@ export default function App() {
   useEffect(() => {
     if (loading || reveal) return;
 
-    const sections = ["hero", "about", "experience", "academic-foundations", "projects", "skills", "contact"];
+    const sections = ["hero", "about", "experience", "academic-foundations", "certifications", "projects", "skills", "contact"];
     const observerOptions = {
       root: null,
       rootMargin: "-25% 0px -45% 0px", // focus target inside visual window
@@ -97,6 +98,7 @@ export default function App() {
         <About />
         <Experience />
         <AcademicFoundations />
+        <Certifications />
         <Projects />
         <Skills />
         <Contact />

@@ -643,7 +643,7 @@ export default function Experience() {
 
           <div className="relative border-l-2 border-[#3F3F46] pl-8 space-y-16">
             
-            {/* Experience Card 1: 10Pearls */}
+            {/* Experience Card 1: NCBC */}
             <div 
               className={`relative transition-all duration-1000 delay-300 ${
                 isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-12"
@@ -657,45 +657,45 @@ export default function Experience() {
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
                   <div>
                     <h4 className="font-display font-bold text-xl text-[#F5F5F4]">
-                      10Pearls
+                      NCBC
                     </h4>
-                    <p className="font-mono text-xs text-[#C48452] mt-0.5">Software Engineering Intern</p>
+                    <p className="font-mono text-xs text-[#C48452] mt-0.5">AI Engineer Intern</p>
                   </div>
                   <span className="py-1 px-3 bg-[#C48452]/10 border border-[#C48452]/20 text-xs font-mono text-[#C48452] rounded-full self-start">
-                    2 Months • 2025
+                    Jun 2026 – Sept 2026
                   </span>
                 </div>
 
                 <div className="flex gap-4 text-[#A1A1AA] text-xs font-mono mb-6 pb-4 border-b border-[#3F3F46]/30">
                   <span className="flex items-center gap-1">
-                    <MapPin size={12} className="text-[#C48452]" /> Karachi, PK
+                    <MapPin size={12} className="text-[#C48452]" /> Karachi, Pakistan
                   </span>
                   <span className="flex items-center gap-1">
-                    <Calendar size={12} className="text-[#C48452]" /> Jun – Aug 
+                    <Calendar size={12} className="text-[#C48452]" /> Jun 2026 – Sept 2026
                   </span>
                 </div>
 
                 <ul className="space-y-3.5 text-sm text-[#A1A1AA]">
                   <li className="flex items-start gap-2.5">
                     <span className="text-[#C48452] mt-1 shrink-0">❖</span>
-                    <span>Built interactive modular user portals using <span className="text-[#F5F5F4]">React.js</span>, streamlining complex state transitions and reactive UI callbacks.</span>
+                    <span>Developed an LLM-powered agentic system that interprets natural language queries and autonomously selects and executes the right tools to deliver data-driven insights.</span>
                   </li>
                   <li className="flex items-start gap-2.5">
                     <span className="text-[#C48452] mt-1 shrink-0">❖</span>
-                    <span>Designed & optimized backend endpoints in <span className="text-[#F5F5F4]">Express.js & Node.js</span>, focusing on robust parameter validation, automated logging, and error wrappers.</span>
+                    <span>Enabled natural language interaction with complex multi-layer datasets, translating user intent into structured analysis and visualization requests.</span>
                   </li>
                   <li className="flex items-start gap-2.5">
                     <span className="text-[#C48452] mt-1 shrink-0">❖</span>
-                    <span>Utilized <span className="text-[#F5F5F4]">SonarQube</span> for static code analysis, debugging memory consumption, security risks, and technical debt profiles.</span>
+                    <span>Designed multi-step agent workflows with intelligent dataset orchestration, enabling reasoning over historical and time-aware data.</span>
                   </li>
                   <li className="flex items-start gap-2.5">
                     <span className="text-[#C48452] mt-1 shrink-0">❖</span>
-                    <span>Automated deployment testing runs via CI workflows orchestrated inside <span className="text-[#F5F5F4]">GitHub Actions</span> with Jest environments.</span>
+                    <span>Integrated LLM agents with a modular, provider-based backend to support scalable, extensible AI-driven analysis.</span>
                   </li>
                 </ul>
 
                 <div className="flex flex-wrap gap-2 mt-8 pt-4 border-t border-[#3F3F46]/30">
-                  {["Node.js", "Express.js", "React.js", "MongoDB", "Jest", "SonarQube", "CI/CD"].map((tech) => (
+                  {["LLM Agents", "Agentic Workflows", "LangGraph", "Python", "Tool Execution", "Dataset Orchestration"].map((tech) => (
                     <span
                       key={tech}
                       className="py-1 px-2.5 bg-[#1C1C1F] text-xs text-[#C48452] rounded font-mono border border-[#3F3F46]/40"
@@ -707,7 +707,7 @@ export default function Experience() {
               </div>
             </div>
 
-            {/* Experience Card 2: NED University */}
+            {/* Experience Card 2: 10Pearls */}
             <div 
               className={`relative transition-all duration-1000 delay-500 ${
                 isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-12"
@@ -721,33 +721,48 @@ export default function Experience() {
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
                   <div>
                     <h4 className="font-display font-bold text-xl text-[#F5F5F4]">
-                      NED University of Engineering & Technology
+                      10Pearls
                     </h4>
-                    <p className="font-mono text-xs text-[#C48452] mt-0.5">Bachelor of Engineering — BE</p>
+                    <p className="font-mono text-xs text-[#C48452] mt-0.5">Software Engineer Intern</p>
                   </div>
                   <span className="py-1 px-3 bg-[#F1C9A5]/10 border border-[#F1C9A5]/20 text-xs font-mono text-[#F1C9A5] rounded-full self-start">
-                    Oct 2023 – Present
+                    Sept 2025 – Dec 2025
                   </span>
                 </div>
 
                 <div className="flex gap-4 text-[#A1A1AA] text-xs font-mono mb-6 pb-4 border-b border-[#3F3F46]/30">
                   <span className="flex items-center gap-1">
-                    <MapPin size={12} className="text-[#C48452]" /> Karachi, PK
+                    <MapPin size={12} className="text-[#C48452]" /> Karachi, Pakistan
                   </span>
                   <span className="flex items-center gap-1">
-                    <Calendar size={12} className="text-[#C48452]" /> 3rd Year
+                    <Calendar size={12} className="text-[#C48452]" /> Sept 2025 – Dec 2025
                   </span>
                 </div>
 
-                <p className="text-sm text-[#A1A1AA] leading-relaxed mb-6">
-                  Deeply investigating Computer Systems Engineering topics including low-latency system logic design, OOP engineering principles, operating systems micro-kernels, assembler instructions, structured algorithms, database architecture, and digital signal modulation.
-                </p>
+                <ul className="space-y-3.5 text-sm text-[#A1A1AA]">
+                  <li className="flex items-start gap-2.5">
+                    <span className="text-[#C48452] mt-1 shrink-0">❖</span>
+                    <span>Engineered full-stack web applications with responsive user interfaces and scalable REST APIs.</span>
+                  </li>
+                  <li className="flex items-start gap-2.5">
+                    <span className="text-[#C48452] mt-1 shrink-0">❖</span>
+                    <span>Applied modern state management, error handling, and production-ready development practices to deliver maintainable, reliable features.</span>
+                  </li>
+                  <li className="flex items-start gap-2.5">
+                    <span className="text-[#C48452] mt-1 shrink-0">❖</span>
+                    <span>Wrote unit and component tests to improve application reliability.</span>
+                  </li>
+                  <li className="flex items-start gap-2.5">
+                    <span className="text-[#C48452] mt-1 shrink-0">❖</span>
+                    <span>Established code quality analysis and CI/CD pipelines to streamline builds and deployments.</span>
+                  </li>
+                </ul>
 
-                <div className="flex flex-wrap gap-2 pt-4 border-t border-[#3F3F46]/30">
-                  {["System Architecture", "Algorithms", "Network Protocols", "Micro-systems", "OOP Design"].map((tech) => (
+                <div className="flex flex-wrap gap-2 mt-8 pt-4 border-t border-[#3F3F46]/30">
+                  {["React", "Node.js", "Express.js", "REST APIs", "Jest", "SonarQube", "CI/CD"].map((tech) => (
                     <span
                       key={tech}
-                      className="py-1 px-2.5 bg-[#1C1C1F] text-xs text-[#A1A1AA] rounded font-mono border border-[#3F3F46]/40"
+                      className="py-1 px-2.5 bg-[#1C1C1F] text-xs text-[#C48452] rounded font-mono border border-[#3F3F46]/40"
                     >
                       {tech}
                     </span>

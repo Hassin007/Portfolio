@@ -1,11 +1,51 @@
 import React, { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform, useSpring, MotionValue } from "motion/react";
+import { Code, Terminal, Cpu, Brain, Layers, Wrench, CheckCircle } from "lucide-react";
 
 interface TechItemType {
   id: string;
   name: string;
   logo: React.ReactNode;
 }
+
+export const skillCategories = [
+  {
+    id: "languages",
+    title: "Languages",
+    icon: Code,
+    skills: ["Python", "SQL", "NoSQL (MongoDB)", "JavaScript", "TypeScript"]
+  },
+  {
+    id: "frameworks",
+    title: "Frameworks",
+    icon: Layers,
+    skills: ["React", "Node.js", "Express", "NextJS", "FastAPI", "Socket.IO", "ShadCN UI", "Framer Motion"]
+  },
+  {
+    id: "ml",
+    title: "Machine Learning",
+    icon: Cpu,
+    skills: ["PyTorch", "TensorFlow", "scikit-learn", "LightGBM", "Optuna", "CNNs", "RNNs", "LSTMs"]
+  },
+  {
+    id: "ai",
+    title: "AI & Agents",
+    icon: Brain,
+    skills: ["LangChain", "LangGraph", "RAG", "Agentic AI", "Model Context Protocol (MCP)", "LLM Integration"]
+  },
+  {
+    id: "libraries",
+    title: "Libraries",
+    icon: Terminal,
+    skills: ["pandas", "NumPy", "Matplotlib", "GeoPandas", "Folium", "Tanstack Query", "Zustand"]
+  },
+  {
+    id: "tools",
+    title: "Developer Tools",
+    icon: Wrench,
+    skills: ["Git", "GitHub Actions", "Docker", "Linux (Ubuntu)", "SonarQube", "Jest", "React Testing Library", "REST APIs"]
+  }
+];
 
 export default function Skills() {
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -171,36 +211,48 @@ export default function Skills() {
       <svg viewBox="0 0 24 24" className="w-10 h-10 select-none pointer-events-none" fill="none" stroke="none">
         <path d="M12.15 2.01c-1.12.03-2.22.42-3.13 1.13C8.61 3.46 8 4.21 7.59 5.06c-.41.86-.6 1.79-.58 2.74c.03.68.14 1.35.34 2-.51.15-1 .39-1.42.72c-.7.54-1.21 1.28-1.46 2.12c-.2.66-.23 1.35-.14 2.03c.12.87.5 1.68 1.1 2.31c.64.67 1.5 1.11 2.45 1.25l.04-.37c-.77-.11-1.47-.47-1.98-1.02c-.51-.54-.83-1.23-.93-1.97-.08-.55-.05-1.1.11-1.63c.2-.67.61-1.26 1.17-1.69c.35-.28.76-.48 1.2-.59c.28.38.61.72.97.99l.23-.29c-.31-.23-.59-.51-.83-.83c.7-.35 1.48-.54 2.27-.58l.02-.38c-.68.04-1.35.2-1.96.5c-.17-.4-.3-.82-.37-1.24a4.42 4.42 0 0 1-.09-1.27c0-.82.16-1.63.5-2.37c.33-.74.83-1.39 1.46-1.89c.81-.63 1.8-.97 2.81-1c1.24-.04 2.48.33 3.49 1.05C16.81 5.37 17.5 6.42 17.84 7.6c.33 1.17.3 2.41-.1 3.56c-.4 1.15-1.17 2.14-2.18 2.82c-.85.57-1.85.89-2.88.94l-.02.38c1.13-.06 2.23-.41 3.16-1.04c1.1-.75 1.94-1.83 2.37-3.09c.43-1.26.46-2.61.1-3.89c-.37-1.29-1.12-2.44-2.18-3.22c-1.1-.8-2.45-1.2-3.8-1.15H12.15zM11.96 11.23c-.7-.14-1.37.04-1.94.49c-.58.46-.96 1.13-1.07 1.87c-.08.52-.02 1.05.18 1.54c.24.58.64 1.07 1.16 1.4.54.34 1.18.5 1.82.46.72-.05 1.4-.33 1.94-.81l-.24-.29c-.47.41-1.06.65-1.68.7c-.55.04-1.1-.1-1.56-.4s-.79-.74-.99-1.25a2.76 2.76 0 0 1-.16-1.32c.09-.64.42-1.22.92-1.62c.49-.39 1.08-.55 1.69-.43l.08-.37h-.15zm1.53.51c-.69.21-1.28.66-1.67 1.28c-.39.62-.55 1.35-.45 2.07c.07.51.25 1 .53 1.43c.33.5.78.89 1.32 1.12c.56.24 1.18.3 1.79.18s1.17-.43 1.59-.87l-.27-.26c-.36.38-.85.64-1.38.74s-1.08.05-1.56-.16c-.46-.2-.84-.53-1.12-.96c-.24-.37-.39-.79-.45-1.23c-.09-.62.05-1.24.39-1.77c.34-.53.84-.91 1.42-1.09l-.14-.49z" fill="#336791" />
       </svg>
+    ),
+    pytorch: (
+      <svg viewBox="0 0 24 24" className="w-10 h-10 select-none pointer-events-none" fill="none">
+        <path d="M12 2a9 9 0 0 0-6.36 15.36L7.05 16A7 7 0 1 1 12 19v2a9 9 0 0 0 0-18zm2 4.5l-1.5 1.5-1.5-1.5L12 5l2 1.5z" fill="#EE4C2C" />
+      </svg>
+    ),
+    tensorflow: (
+      <svg viewBox="0 0 24 24" className="w-10 h-10 select-none pointer-events-none" fill="none">
+        <path d="M12 2l9 5.2v10.4l-3 1.7v-9.5L12 6.5 6 9.8v9.5L3 17.6V7.2L12 2z" fill="#FF6F00" />
+        <path d="M12 8l4.5 2.6v5.2L12 18.4l-4.5-2.6v-5.2L12 8z" fill="#FFA500" />
+      </svg>
     )
   };
 
   const technologies: TechItemType[] = [
-    { id: "react", name: "React", logo: logos.react },
-    { id: "nextjs", name: "Next.js", logo: logos.nextjs },
+    { id: "python", name: "Python", logo: logos.python },
     { id: "ts", name: "TypeScript", logo: logos.ts },
     { id: "js", name: "JavaScript", logo: logos.js },
+    { id: "react", name: "React", logo: logos.react },
+    { id: "nextjs", name: "Next.js", logo: logos.nextjs },
     { id: "node", name: "Node.js", logo: logos.node },
     { id: "express", name: "Express", logo: logos.express },
-    { id: "postgresql", name: "PostgreSQL", logo: logos.postgresql },
-    { id: "mongodb", name: "MongoDB", logo: logos.mongodb },
     { id: "fastapi", name: "FastAPI", logo: logos.fastapi },
-    { id: "fastmcp", name: "FastMCP", logo: logos.fastmcp },
-    { id: "python", name: "Python", logo: logos.python },
+    { id: "mongodb", name: "MongoDB", logo: logos.mongodb },
+    { id: "postgresql", name: "SQL & DBs", logo: logos.postgresql },
+    { id: "pytorch", name: "PyTorch", logo: logos.pytorch },
+    { id: "tensorflow", name: "TensorFlow", logo: logos.tensorflow },
     { id: "scikit-learn", name: "Scikit-Learn", logo: logos["scikit-learn"] },
     { id: "langchain", name: "LangChain", logo: logos.langchain },
     { id: "langgraph", name: "LangGraph", logo: logos.langgraph },
+    { id: "fastmcp", name: "Model Context Protocol", logo: logos.fastmcp },
     { id: "docker", name: "Docker", logo: logos.docker },
-    { id: "linux", name: "Linux", logo: logos.linux },
+    { id: "linux", name: "Linux (Ubuntu)", logo: logos.linux },
     { id: "github-actions", name: "GitHub Actions", logo: logos["github-actions"] },
     { id: "tanstack", name: "TanStack Query", logo: logos.tanstack },
     { id: "zustand", name: "Zustand", logo: logos.zustand }
   ];
 
-  // Diagonal translation spacing ratios (perpendicular to standard coordinates)
+  // Diagonal translation spacing ratios
   const spacingX = spacing;
   const spacingY = Math.round(spacing * 0.72);
 
-  // Use vertical scroll of section body to drive the diagonal timeline positioning
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"]
@@ -208,29 +260,23 @@ export default function Skills() {
 
   const maxIndex = technologies.length - 1;
 
-  // We translate horizontally and vertically in lockstep to keep the active item perfectly centered
   const targetX = useTransform(scrollYProgress, [0, 1], [0, -maxIndex * spacingX]);
   const targetY = useTransform(scrollYProgress, [0, 1], [0, -maxIndex * spacingY]);
 
-  // Spring-based buttery-smooth motion configuration (no abrupt snapping or bouncing)
   const smoothX = useSpring(targetX, { stiffness: 45, damping: 20, mass: 0.8 });
   const smoothY = useSpring(targetY, { stiffness: 45, damping: 20, mass: 0.8 });
 
-  // Compute points of the diagonal line sequence to render the curved path
   const points = technologies.map((_, i) => ({
     x: i * spacingX,
     y: i * spacingY
   }));
 
-  // Build a beautiful cubic Bezier spline that loops gently and connects other items gracefully
   let pathD = "";
   if (points.length > 0) {
     pathD = `M ${points[0].x} ${points[0].y}`;
     for (let i = 0; i < points.length - 1; i++) {
       const p0 = points[i];
       const p1 = points[i + 1];
-      
-      // Control points to introduce a gorgeous, very subtle weave wave
       const offsetDir = i % 2 === 0 ? 1 : -1;
       const amp = spacingX * 0.16 * offsetDir;
       const nx = -0.58 * amp;
@@ -246,83 +292,140 @@ export default function Skills() {
   }
 
   return (
-    <section
-      id="skills"
-      ref={containerRef}
-      className="relative h-[420vh] bg-[#070708]"
-    >
-      {/* Sticky Presentation Viewport */}
-      <div className="sticky top-0 h-screen w-full flex flex-col justify-between overflow-hidden z-20 md:py-12 py-8">
-        
-        {/* Subtle dynamic technical blueprint outline behind content */}
-        <div className="absolute inset-0 pointer-events-none opacity-[0.015] select-none z-0">
-          <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <pattern id="skills-grid" width="60" height="60" patternUnits="userSpaceOnUse">
-                <circle cx="1" cy="1" r="1" fill="#FFFFFF" />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#skills-grid)" />
-          </svg>
-        </div>
-
-        {/* Cinematic Section Header */}
-        <div className="text-center relative z-10 flex flex-col items-center px-6 mt-4 select-none">
-          <div className="flex items-center gap-2 mb-2.5 font-mono text-xs text-neutral-500 uppercase tracking-widest">
-            <span>// 04. CORE STACK</span>
-          </div>
-          <h2 className="font-sans font-extrabold text-3xl sm:text-5xl text-[#F5F5F4] tracking-tight leading-none uppercase">
-            MY TOOLKIT<span className="text-[#C48452]">.</span>
-          </h2>
-          <p className="font-mono text-[9px] text-neutral-500 uppercase tracking-[0.25em] mt-3">
-            A flowing timeline representation of architectural focus
-          </p>
-        </div>
-
-        {/* Diagonal Canvas Wrapper */}
-        <div className="relative flex-1 w-full flex items-center justify-center">
+    <section id="skills" className="bg-[#070708] border-t border-[#3F3F46]/30">
+      {/* 1. Kinetic Scroll Viewport */}
+      <div ref={containerRef} className="relative h-[360vh]">
+        <div className="sticky top-0 h-screen w-full flex flex-col justify-between overflow-hidden z-20 md:py-12 py-8">
           
-          {/* Radial mask to fade the edges seamlessly */}
-          <div className="absolute inset-0 bg-radial-[circle_at_center,transparent_40%,#070708_95%] z-10 pointer-events-none" />
-
-          {/* Core scroll track containing items and background spline line */}
-          <motion.div
-            style={{ x: smoothX, y: smoothY }}
-            className="absolute flex items-center justify-center w-0 h-0"
-          >
-            {/* Extremely faint custom wavy connector line */}
-            <svg className="absolute overflow-visible pointer-events-none select-none z-0" style={{ left: 0, top: 0 }}>
-              <motion.path
-                d={pathD}
-                fill="none"
-                stroke="url(#amber-neutral-gradient)"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                opacity="0.09"
-              />
+          {/* Technical blueprint grid background */}
+          <div className="absolute inset-0 pointer-events-none opacity-[0.015] select-none z-0">
+            <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
               <defs>
-                <linearGradient id="amber-neutral-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#C48452" />
-                  <stop offset="50%" stopColor="#81502C" />
-                  <stop offset="100%" stopColor="#C48452" />
-                </linearGradient>
+                <pattern id="skills-grid" width="60" height="60" patternUnits="userSpaceOnUse">
+                  <circle cx="1" cy="1" r="1" fill="#FFFFFF" />
+                </pattern>
               </defs>
+              <rect width="100%" height="100%" fill="url(#skills-grid)" />
             </svg>
+          </div>
 
-            {/* Individual sequence items */}
-            {technologies.map((tech, index) => (
-              <TechItem
-                key={tech.id}
-                tech={tech}
-                index={index}
-                spacingX={spacingX}
-                spacingY={spacingY}
-                smoothX={smoothX}
-              />
-            ))}
-          </motion.div>
+          {/* Section Header */}
+          <div className="text-center relative z-10 flex flex-col items-center px-6 mt-4 select-none">
+            <div className="flex items-center gap-2 mb-2.5 font-mono text-xs text-neutral-500 uppercase tracking-widest">
+              <span>// 05. TECHNICAL SKILLS & STACK</span>
+            </div>
+            <h2 className="font-sans font-extrabold text-3xl sm:text-5xl text-[#F5F5F4] tracking-tight leading-none uppercase">
+              ENGINEERING TOOLKIT<span className="text-[#C48452]">.</span>
+            </h2>
+            <p className="font-mono text-[9px] text-neutral-500 uppercase tracking-[0.25em] mt-3">
+              Kinetic timeline of tools, languages, and frameworks
+            </p>
+          </div>
+
+          {/* Diagonal Canvas Wrapper */}
+          <div className="relative flex-1 w-full flex items-center justify-center">
+            <div className="absolute inset-0 bg-radial-[circle_at_center,transparent_40%,#070708_95%] z-10 pointer-events-none" />
+
+            <motion.div
+              style={{ x: smoothX, y: smoothY }}
+              className="absolute flex items-center justify-center w-0 h-0"
+            >
+              <svg className="absolute overflow-visible pointer-events-none select-none z-0" style={{ left: 0, top: 0 }}>
+                <motion.path
+                  d={pathD}
+                  fill="none"
+                  stroke="url(#amber-neutral-gradient)"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  opacity="0.09"
+                />
+                <defs>
+                  <linearGradient id="amber-neutral-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#C48452" />
+                    <stop offset="50%" stopColor="#81502C" />
+                    <stop offset="100%" stopColor="#C48452" />
+                  </linearGradient>
+                </defs>
+              </svg>
+
+              {technologies.map((tech, index) => (
+                <TechItem
+                  key={tech.id}
+                  tech={tech}
+                  index={index}
+                  spacingX={spacingX}
+                  spacingY={spacingY}
+                  smoothX={smoothX}
+                />
+              ))}
+            </motion.div>
+          </div>
+
         </div>
+      </div>
 
+      {/* 2. Structured Categorized Skills Matrix from cv.md */}
+      <div className="py-24 px-6 lg:px-16 xl:px-24 bg-[#0B0B0C] border-t border-neutral-900 relative">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-14">
+            <span className="font-mono text-xs text-[#C48452] uppercase tracking-widest block mb-2 font-bold">
+              // COMPLETE TECHNICAL BREAKDOWN
+            </span>
+            <h3 className="font-display font-black text-2xl sm:text-3xl text-[#F5F5F4] uppercase tracking-tight">
+              Skill Categories & Proficiencies
+            </h3>
+            <p className="font-mono text-xs text-neutral-400 mt-2 max-w-xl">
+              Accredited engineering capabilities directly structured from resume specifications.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {skillCategories.map((cat, idx) => {
+              const IconComp = cat.icon;
+              return (
+                <motion.div
+                  key={cat.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: idx * 0.1 }}
+                  className="bg-[#141416] border border-neutral-800/80 rounded-2xl p-6 sm:p-7 hover:border-[#C48452]/40 transition-all duration-300 flex flex-col justify-between group hover:shadow-[0_12px_35px_rgba(196,132,82,0.06)]"
+                >
+                  <div>
+                    <div className="flex items-center justify-between mb-5">
+                      <div className="p-2.5 rounded-xl bg-[#1C1C1F] border border-neutral-800 text-[#C48452] group-hover:border-[#C48452]/40 transition-colors">
+                        <IconComp size={18} />
+                      </div>
+                      <span className="font-mono text-[9px] text-neutral-600 group-hover:text-[#C48452]/70 uppercase font-bold tracking-widest">
+                        CAT // 0{idx + 1}
+                      </span>
+                    </div>
+
+                    <h4 className="font-display font-bold text-lg text-[#F5F5F4] mb-4 group-hover:text-[#F1C9A5] transition-colors">
+                      {cat.title}
+                    </h4>
+
+                    <div className="flex flex-wrap gap-1.5">
+                      {cat.skills.map((skill) => (
+                        <span
+                          key={skill}
+                          className="py-1 px-2.5 bg-[#0D0D0F] border border-neutral-800 text-neutral-300 text-xs font-mono rounded hover:border-[#C48452]/30 hover:text-white transition-colors"
+                        >
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="mt-6 pt-4 border-t border-neutral-900 flex items-center justify-between font-mono text-[10px] text-neutral-500">
+                    <span>{cat.skills.length} competencies</span>
+                    <CheckCircle size={12} className="text-[#C48452]/70" />
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
       </div>
     </section>
   );
@@ -338,13 +441,9 @@ interface TechItemProps {
 }
 
 function TechItem({ tech, index, spacingX, spacingY, smoothX }: TechItemProps) {
-  // Absolute offset inside our track coordinates
   const itemPosX = index * spacingX;
-
-  // Track position relative to center of screen viewport
   const relativeX = useTransform(smoothX, (currentX) => currentX + itemPosX);
 
-  // Compute visual focus based on proximity to center of screen (relativeX === 0)
   const scale = useTransform(
     relativeX,
     [-spacingX * 3, -spacingX * 1.5, -spacingX, 0, spacingX, spacingX * 1.5, spacingX * 3],
@@ -369,12 +468,10 @@ function TechItem({ tech, index, spacingX, spacingY, smoothX }: TechItemProps) {
         y: index * spacingY,
         scale,
         opacity,
-        // Centering anchor parameters
         transformOrigin: "center center",
       }}
       className="flex flex-col items-center justify-center select-none -translate-x-1/2 -translate-y-1/2"
     >
-      {/* Dynamic Hover Card Container */}
       <motion.div
         whileHover={{
           scale: 1.12,
@@ -382,17 +479,13 @@ function TechItem({ tech, index, spacingX, spacingY, smoothX }: TechItemProps) {
         }}
         className="flex flex-col items-center justify-center gap-4 group cursor-pointer"
       >
-        {/* Brand visual showcase frame */}
         <div className="md:p-6 p-4.5 rounded-2xl bg-[#0B0B0C] border border-neutral-900 group-hover:border-[#C48452]/45 transition-all duration-300 group-hover:shadow-[0_0_25px_rgba(196,132,82,0.16)] flex items-center justify-center md:w-20 md:h-20 w-16 h-16 relative overflow-hidden ring-1 ring-neutral-950">
-          {/* Internal warming color accent layer */}
           <div className="absolute inset-0 bg-gradient-to-br from-[#C48452]/3 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-          
           <div className="group-hover:scale-105 transition-transform duration-300 flex items-center justify-center z-10">
             {tech.logo}
           </div>
         </div>
 
-        {/* Core dynamic typography label */}
         <span className="font-mono text-[8px] sm:text-[10px] font-semibold tracking-widest text-neutral-400 group-hover:text-[#F5F5F4] transition-colors duration-300 uppercase whitespace-nowrap">
           {tech.name}
         </span>

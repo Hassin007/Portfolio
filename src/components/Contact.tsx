@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Mail, Linkedin, Github, Phone, MapPin, Send, CheckCircle } from "lucide-react";
+import { Mail, Linkedin, Github, MapPin, Send, CheckCircle, AlertTriangle, X } from "lucide-react";
+import emailjs from "@emailjs/browser";
 
 export default function Contact() {
   const [isVisible, setIsVisible] = useState(false);
@@ -7,6 +8,7 @@ export default function Contact() {
   const [errors, setErrors] = useState<{ [key: string]: boolean }>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const sectionRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -37,10 +39,14 @@ export default function Contact() {
     if (errors[name]) {
       setErrors((prev) => ({ ...prev, [name]: false }));
     }
+    if (errorMessage) {
+      setErrorMessage(null);
+    }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setErrorMessage(null);
     const newErrors: { [key: string]: boolean } = {};
     let hasError = false;
 
@@ -55,25 +61,47 @@ export default function Contact() {
 
     if (hasError) {
       setErrors(newErrors);
-      // Automatically reset shake animations after a delay so it can shake again on next submission
       setTimeout(() => {
         setErrors({});
       }, 3000);
       return;
     }
 
-    // Success submission trigger animation
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+    if (!serviceId || !templateId || !publicKey) {
+      setErrorMessage("Email service configuration is missing. Please reach out directly at hassinsaghir6@gmail.com.");
+      return;
+    }
+
     setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
+
+    try {
+      await emailjs.send(
+        serviceId,
+        templateId,
+        {
+          name: formState.name,
+          from_name: formState.name,
+          email: formState.email,
+          reply_to: formState.email,
+          subject: formState.subject,
+          message: formState.message,
+        },
+        publicKey
+      );
+
       setIsSuccess(true);
       setFormState({ name: "", email: "", subject: "", message: "" });
-      
-      // Hide success notification after 5 seconds
-      setTimeout(() => {
-        setIsSuccess(false);
-      }, 5000);
-    }, 1200);
+    } catch (err: unknown) {
+      console.error("EmailJS dispatch failed:", err);
+      const errDetails = err instanceof Error ? err.message : (typeof err === "object" && err !== null && "text" in err ? String((err as { text: unknown }).text) : "Unknown error");
+      setErrorMessage(`Failed to send message (${errDetails}). Please try again or reach out directly at hassinsaghir6@gmail.com.`);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -89,7 +117,7 @@ export default function Contact() {
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
-          <p className="font-mono text-sm text-[#C48452] mb-2">// 05 contact</p>
+          <p className="font-mono text-sm text-[#C48452] mb-2">// 06 CONTACT</p>
           <h2 className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-[#F5F5F4] tracking-tight mb-4">
             Let's Work Together
           </h2>
@@ -98,14 +126,14 @@ export default function Contact() {
 
         {/* Content Columns split */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-          {/* Left Column: Cards */}
+          {/* Left Column: Direct Info Cards */}
           <div
             className={`lg:col-span-5 space-y-6 transition-all duration-800 ${
               isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-12"
             }`}
           >
             <p className="font-sans text-[#A1A1AA] text-base leading-relaxed mb-6">
-              Whether it's a full-stack project, an AI integration, or just a conversation about building something cool — my inbox is always open. Let's make something impressive together!
+              Whether it's an AI agentic pipeline, a full-stack engineering challenge, or discussing distributed architectures — my inbox is always open. Send a direct message and let's build something remarkable.
             </p>
 
             {/* Direct Information connections */}
@@ -168,24 +196,6 @@ export default function Contact() {
                 </div>
               </a>
 
-              {/* Phone */}
-              <a
-                href="tel:0319-0332960"
-                className="flex items-center gap-4 bg-[#141416]/90 border border-[#3F3F46] p-4 rounded-xl hover:border-[#C48452] hover:shadow-[0_0_20px_rgba(196,132,82,0.08)] transition-all duration-300 group"
-              >
-                <div className="p-3 bg-[#1C1C1F] border border-[#3F3F46] group-hover:border-[#C48452] text-[#A1A1AA] group-hover:text-[#C48452] rounded-lg transition-colors">
-                  <Phone size={18} />
-                </div>
-                <div>
-                  <span className="block font-mono text-[10px] uppercase text-[#A1A1AA] tracking-wider mb-0.5">
-                    Call Direct
-                  </span>
-                  <span className="text-sm font-medium text-[#F5F5F4]">
-                    0319-0332960
-                  </span>
-                </div>
-              </a>
-
               {/* Map Location */}
               <div className="flex items-center gap-4 bg-[#141416]/90 border border-[#3F3F46] p-4 rounded-xl hover:border-[#C48452] transition-colors duration-300">
                 <div className="p-3 bg-[#1C1C1F] border border-[#3F3F46] text-[#A1A1AA] rounded-lg">
@@ -203,7 +213,7 @@ export default function Contact() {
             </div>
           </div>
 
-          {/* Right Column: Contact form box */}
+          {/* Right Column: Contact form box with EmailJS */}
           <div
             className={`lg:col-span-7 transition-all duration-800 delay-200 ${
               isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-12"
@@ -217,13 +227,30 @@ export default function Contact() {
                   <CheckCircle size={48} className="text-[#F1C9A5] mb-4 animate-bounce" />
                   <h3 className="font-display font-semibold text-xl text-[#F5F5F4] mb-2">Message Dispatched!</h3>
                   <p className="text-sm text-[#A1A1AA] max-w-sm mb-6">
-                    Thank you! Your message has been sent successfully. I will get back to you inside 24 hours.
+                    Thank you! Your message has been sent successfully via EmailJS. I will respond to you within 24 hours.
                   </p>
                   <button
                     onClick={() => setIsSuccess(false)}
-                    className="py-2 px-6 bg-[#C48452] hover:bg-[#E2A46E] text-white font-medium text-xs rounded transition-colors"
+                    className="py-2.5 px-6 bg-[#C48452] hover:bg-[#E2A46E] text-white font-medium text-xs font-mono uppercase tracking-wider rounded-xl transition-colors shadow-md"
                   >
                     Send Another Message
+                  </button>
+                </div>
+              )}
+
+              {/* Inline Error Alert */}
+              {errorMessage && (
+                <div className="mb-6 p-4 rounded-xl bg-red-950/40 border border-red-500/40 text-red-200 text-xs font-mono flex items-start justify-between gap-3">
+                  <div className="flex items-start gap-2">
+                    <AlertTriangle size={16} className="text-red-400 shrink-0 mt-0.5" />
+                    <span>{errorMessage}</span>
+                  </div>
+                  <button
+                    onClick={() => setErrorMessage(null)}
+                    className="text-red-400 hover:text-red-200 p-1"
+                    aria-label="Dismiss error"
+                  >
+                    <X size={14} />
                   </button>
                 </div>
               )}
@@ -291,7 +318,7 @@ export default function Contact() {
                     name="subject"
                     value={formState.subject}
                     onChange={handleInputChange}
-                    placeholder="Full-Stack Internship Opportunity"
+                    placeholder="AI / Full-Stack Collaboration"
                     className={`w-full bg-[#1C1C1F] text-[#F5F5F4] text-sm px-4 py-3 rounded-xl border transition-all duration-300 outline-none ${
                       errors.subject ? "border-red-400/40" : "border-[#3F3F46]/40 focus:border-[#C48452] focus:shadow-[0_0_12px_rgba(196,132,82,0.15)] focus:ring-1 focus:ring-[#C48452]/20"
                     }`}
@@ -314,7 +341,7 @@ export default function Contact() {
                     rows={5}
                     value={formState.message}
                     onChange={handleInputChange}
-                    placeholder="Hey Hassin, let's connect and schedule a talk..."
+                    placeholder="Hey Hassin, let's connect and discuss an opportunity..."
                     className={`w-full bg-[#1C1C1F] text-[#F5F5F4] text-sm px-4 py-3 rounded-xl border transition-all duration-300 outline-none resize-none ${
                       errors.message ? "border-red-400/40" : "border-[#3F3F46]/40 focus:border-[#C48452] focus:shadow-[0_0_12px_rgba(196,132,82,0.15)] focus:ring-1 focus:ring-[#C48452]/20"
                     }`}
@@ -325,7 +352,7 @@ export default function Contact() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-[#C48452] hover:bg-[#E2A46E] text-white py-3.5 rounded-xl font-semibold text-xs uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-2 shadow-lg active:scale-[0.98] disabled:opacity-60"
+                  className="w-full bg-[#C48452] hover:bg-[#E2A46E] text-white py-3.5 rounded-xl font-semibold text-xs uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-2 shadow-lg active:scale-[0.98] disabled:opacity-60 cursor-pointer"
                 >
                   {isSubmitting ? (
                     <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />

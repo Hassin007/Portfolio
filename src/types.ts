@@ -8,6 +8,7 @@ export interface Project {
   id: string;
   title: string;
   slug: string;
+  category: "AI" | "ML" | "Full-stack";
   description: string;
   longDescription: string;
   challenges: string;
@@ -33,7 +34,15 @@ export interface Experience {
 export interface SkillCategory {
   id: string;
   title: string;
-  emoji: string;
   skills: string[];
-  primarySkills?: string[]; // skills colored as high confidence
+}
+
+export interface Certification {
+  id: string;
+  title: string;
+  issuer: string;
+  issueDate?: string;
+  credentialUrl: string;
+  badge?: string;
+  skills?: string[];
 }
