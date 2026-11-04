@@ -1,0 +1,6 @@
+{
+  "name": "Hassin Portfolio",
+  "description": "Single-page portfolio website for Muhammad Hassin Saghir, Computer Systems Engineering student and Full-Stack / AI systems developer.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
