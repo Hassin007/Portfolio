@@ -43,6 +43,8 @@ export interface Certification {
   issuer: string;
   issueDate?: string;
   credentialUrl: string;
+  verifyUrl?: string;
+  image: string;
   badge?: string;
   skills?: string[];
 }

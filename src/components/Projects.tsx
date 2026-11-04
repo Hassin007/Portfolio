@@ -566,12 +566,308 @@ export default function Projects() {
                     </svg>
                   </div>
 
-                  {/* ASCII Diagram Visualizer */}
-                  <div className="relative z-10 w-full h-full flex items-center justify-center p-2 overflow-x-auto">
-                    <pre className="font-mono text-[9px] sm:text-[10px] md:text-[11px] text-[#F1C9A5] leading-relaxed tracking-wider select-none text-center">
-                      {activeProject.architecture.trim()}
-                    </pre>
-                  </div>
+                  {/* Interactive animated graphics dynamically updated for every project */}
+                  {activeProject.id === "terraflux" && (
+                    <svg width="100%" height="100%" viewBox="0 0 500 240" fill="none" className="z-10 w-full h-full max-h-[220px]">
+                      <g id="terra-traces" stroke="rgba(196,132,82,0.12)" strokeWidth="1.2" strokeDasharray="3 3">
+                        <line x1="100" y1="120" x2="175" y2="60" />
+                        <line x1="175" y1="60" x2="270" y2="60" />
+                        <line x1="270" y1="60" x2="360" y2="120" />
+                        <line x1="100" y1="120" x2="175" y2="180" />
+                        <line x1="175" y1="180" x2="270" y2="180" />
+                        <line x1="270" y1="180" x2="360" y2="120" />
+                      </g>
+
+                      <path id="terra-path-upper" d="M 40 120 L 100 120 L 175 60 L 270 60 L 360 120 L 450 120" fill="none" stroke="rgba(196,132,82,0.2)" strokeWidth="1.5" />
+                      <path id="terra-path-lower" d="M 40 120 L 100 120 L 175 180 L 270 180 L 360 120 L 450 120" fill="none" stroke="rgba(196,132,82,0.2)" strokeWidth="1.5" />
+
+                      <circle r="3.5" fill="#FFFFFF" className="brightness-150 shadow-2xl">
+                        <animateMotion dur="4s" repeatCount="indefinite" path="M 40 120 L 100 120 L 175 60 L 270 60 L 360 120 L 450 120" />
+                      </circle>
+                      <circle r="2.5" fill="#C48452">
+                        <animateMotion dur="4.2s" begin="1.2s" repeatCount="indefinite" path="M 40 120 L 100 120 L 175 180 L 270 180 L 360 120 L 450 120" />
+                      </circle>
+
+                      <g id="terra-modules">
+                        <rect x="25" y="95" width="75" height="50" rx="6" fill="#141416" stroke="#C48452" strokeWidth="1.2" />
+                        <text x="62" y="118" fill="#F1C9A5" fontSize="8" fontFamily="'JetBrains Mono', monospace" textAnchor="middle" fontWeight="bold">QUERY_INPUT</text>
+                        <text x="62" y="132" fill="#A1A1AA" fontSize="7" fontFamily="'JetBrains Mono', monospace" textAnchor="middle">NL Weather</text>
+
+                        <rect x="135" y="40" width="85" height="40" rx="6" fill="#141416" stroke="#3F3F46" strokeWidth="1.2" />
+                        <text x="177" y="59" fill="#F5F5F4" fontSize="8" fontFamily="'JetBrains Mono', monospace" textAnchor="middle" fontWeight="bold">BOUNDARY_RES</text>
+                        <text x="177" y="69" fill="#A1A1AA" fontSize="7" fontFamily="'JetBrains Mono', monospace" textAnchor="middle">Admin Fallback</text>
+
+                        <rect x="135" y="160" width="85" height="40" rx="6" fill="#141416" stroke="#C48452" strokeWidth="1.2" />
+                        <text x="177" y="179" fill="#F1C9A5" fontSize="8" fontFamily="'JetBrains Mono', monospace" textAnchor="middle" fontWeight="bold">LANGGRAPH_CORE</text>
+                        <text x="177" y="189" fill="#A1A1AA" fontSize="7" fontFamily="'JetBrains Mono', monospace" textAnchor="middle">Agentic Workflow</text>
+
+                        <rect x="235" y="95" width="85" height="50" rx="6" fill="#141416" stroke="#3F3F46" strokeWidth="1.2" />
+                        <text x="277" y="118" fill="#F5F5F4" fontSize="8" fontFamily="'JetBrains Mono', monospace" textAnchor="middle" fontWeight="bold">GEOPANDAS_MAP</text>
+                        <text x="277" y="132" fill="#A1A1AA" fontSize="7" fontFamily="'JetBrains Mono', monospace" textAnchor="middle">Shapely Shapes</text>
+
+                        <rect x="375" y="95" width="85" height="50" rx="6" fill="#141416" stroke="#C48452" strokeWidth="1.4" />
+                        <text x="422" y="118" fill="#F1C9A5" fontSize="8" fontFamily="'JetBrains Mono', monospace" textAnchor="middle" fontWeight="bold">MAP_LAYER_OUT</text>
+                        <text x="422" y="132" fill="#10B981" fontSize="7" fontFamily="'JetBrains Mono', monospace" textAnchor="middle" fontWeight="bold">Interactive Viz</text>
+                      </g>
+                    </svg>
+                  )}
+
+                  {activeProject.id === "gitsense" && (
+                    <svg width="100%" height="100%" viewBox="0 0 500 240" fill="none" className="z-10 w-full h-full max-h-[220px]">
+                      <g id="git-grid" stroke="rgba(196,132,82,0.12)" strokeWidth="1.2" strokeDasharray="3 3">
+                        <line x1="105" y1="120" x2="180" y2="45" />
+                        <line x1="105" y1="120" x2="180" y2="120" />
+                        <line x1="105" y1="120" x2="180" y2="195" />
+                        <line x1="275" y1="45" x2="360" y2="120" />
+                        <line x1="275" y1="120" x2="360" y2="120" />
+                        <line x1="275" y1="195" x2="360" y2="120" />
+                      </g>
+
+                      <path id="git-path-top" d="M 40 120 L 105 120 L 180 45 L 275 45 L 360 120 L 450 120" fill="none" stroke="rgba(196,132,82,0.2)" strokeWidth="1.5" />
+                      <path id="git-path-mid" d="M 40 120 L 105 120 L 180 120 L 275 120 L 360 120 L 450 120" fill="none" stroke="rgba(196,132,82,0.2)" strokeWidth="1.5" />
+                      <path id="git-path-bot" d="M 40 120 L 105 120 L 180 195 L 275 195 L 360 120 L 450 120" fill="none" stroke="rgba(196,132,82,0.2)" strokeWidth="1.5" />
+
+                      <circle r="3.5" fill="#FFFFFF" className="brightness-150 shadow-2xl">
+                        <animateMotion dur="4.2s" repeatCount="indefinite" path="M 40 120 L 105 120 L 180 45 L 275 45 L 360 120 L 450 120" />
+                      </circle>
+                      <circle r="2.5" fill="#C48452">
+                        <animateMotion dur="3.8s" begin="0.8s" repeatCount="indefinite" path="M 40 120 L 105 120 L 180 120 L 275 120 L 360 120 L 450 120" />
+                      </circle>
+                      <circle r="3" fill="#C48452">
+                        <animateMotion dur="4.6s" begin="1.8s" repeatCount="indefinite" path="M 40 120 L 105 120 L 180 195 L 275 195 L 360 120 L 450 120" />
+                      </circle>
+
+                      <g id="git-modules">
+                        <rect x="25" y="95" width="75" height="50" rx="6" fill="#141416" stroke="#C48452" strokeWidth="1.2" />
+                        <text x="62" y="118" fill="#F1C9A5" fontSize="8" fontFamily="'JetBrains Mono', monospace" textAnchor="middle" fontWeight="bold">GITHUB_HOOK</text>
+                        <text x="62" y="132" fill="#A1A1AA" fontSize="7" fontFamily="'JetBrains Mono', monospace" textAnchor="middle">PR & Commit Live</text>
+
+                        <rect x="150" y="25" width="90" height="38" rx="6" fill="#141416" stroke="#3F3F46" strokeWidth="1.2" />
+                        <text x="195" y="42" fill="#F5F5F4" fontSize="8" fontFamily="'JetBrains Mono', monospace" textAnchor="middle" fontWeight="bold">SECURITY_SCAN</text>
+                        <text x="195" y="52" fill="#A1A1AA" fontSize="7" fontFamily="'JetBrains Mono', monospace" textAnchor="middle">Risk Evaluator</text>
+
+                        <rect x="150" y="100" width="90" height="40" rx="6" fill="#141416" stroke="#C48452" strokeWidth="1.2" />
+                        <text x="195" y="119" fill="#F1C9A5" fontSize="8" fontFamily="'JetBrains Mono', monospace" textAnchor="middle" fontWeight="bold">LANGGRAPH_PAR</text>
+                        <text x="195" y="131" fill="#A1A1AA" fontSize="7" fontFamily="'JetBrains Mono', monospace" textAnchor="middle">Parallel Checkers</text>
+
+                        <rect x="150" y="175" width="90" height="38" rx="6" fill="#141416" stroke="#3F3F46" strokeWidth="1.2" />
+                        <text x="195" y="192" fill="#F5F5F4" fontSize="8" fontFamily="'JetBrains Mono', monospace" textAnchor="middle" fontWeight="bold">BREAKING_DIFF</text>
+                        <text x="195" y="202" fill="#A1A1AA" fontSize="7" fontFamily="'JetBrains Mono', monospace" textAnchor="middle">API Diff Scan</text>
+
+                        <rect x="265" y="100" width="80" height="40" rx="6" fill="#141416" stroke="#3F3F46" strokeWidth="1.2" />
+                        <text x="305" y="119" fill="#F5F5F4" fontSize="8" fontFamily="'JetBrains Mono', monospace" textAnchor="middle" fontWeight="bold">RISK_SCORE</text>
+                        <text x="305" y="131" fill="#A1A1AA" fontSize="7" fontFamily="'JetBrains Mono', monospace" textAnchor="middle">Langfuse Telemetry</text>
+
+                        <rect x="375" y="95" width="85" height="50" rx="6" fill="#141416" stroke="#C48452" strokeWidth="1.4" />
+                        <text x="417" y="118" fill="#F1C9A5" fontSize="8" fontFamily="'JetBrains Mono', monospace" textAnchor="middle" fontWeight="bold">AUTO_FIX_PR</text>
+                        <text x="417" y="132" fill="#10B981" fontSize="7" fontFamily="'JetBrains Mono', monospace" textAnchor="middle" fontWeight="bold">Ready Solutions</text>
+                      </g>
+                    </svg>
+                  )}
+
+                  {activeProject.id === "bitcoin-pred" && (
+                    <svg width="100%" height="100%" viewBox="0 0 500 240" fill="none" className="z-10 w-full h-full max-h-[220px]">
+                      <g id="grid-traces" stroke="rgba(196,132,82,0.12)" strokeWidth="1.2" strokeDasharray="3 3">
+                        <line x1="120" y1="120" x2="200" y2="60" />
+                        <line x1="120" y1="120" x2="200" y2="180" />
+                        <line x1="200" y1="60" x2="300" y2="60" />
+                        <line x1="200" y1="180" x2="300" y2="180" />
+                        <line x1="300" y1="60" x2="380" y2="120" />
+                        <line x1="300" y1="180" x2="380" y2="120" />
+                      </g>
+
+                      <path id="btc-path-upper" d="M 50 120 L 120 120 L 200 60 L 300 60 L 380 120 L 450 120" fill="none" stroke="rgba(196,132,82,0.2)" strokeWidth="1.5" />
+                      <path id="btc-path-lower" d="M 50 120 L 120 120 L 200 180 L 300 180 L 380 120 L 450 120" fill="none" stroke="rgba(196,132,82,0.2)" strokeWidth="1.5" />
+
+                      <circle r="3.5" fill="#FFFFFF" className="brightness-150 shadow-2xl">
+                        <animateMotion dur="4s" repeatCount="indefinite" path="M 50 120 L 120 120 L 200 60 L 300 60 L 380 120 L 450 120" />
+                      </circle>
+                      <circle r="2.5" fill="#C48452">
+                        <animateMotion dur="4.2s" begin="1.2s" repeatCount="indefinite" path="M 50 120 L 120 120 L 200 180 L 300 180 L 380 120 L 450 120" />
+                      </circle>
+                      <circle r="3" fill="#C48452">
+                        <animateMotion dur="5.5s" begin="2.5s" repeatCount="indefinite" path="M 50 120 L 120 120 L 200 60 L 300 60 L 380 120 L 450 120" />
+                      </circle>
+
+                      <g id="blueprint-modules">
+                        <rect x="25" y="95" width="70" height="50" rx="6" fill="#141416" stroke="#C48452" strokeWidth="1.2" />
+                        <text x="60" y="118" fill="#F1C9A5" fontSize="8" fontFamily="'JetBrains Mono', monospace" textAnchor="middle" fontWeight="bold">INPUT_FEED</text>
+                        <text x="60" y="132" fill="#A1A1AA" fontSize="7" fontFamily="'JetBrains Mono', monospace" textAnchor="middle">BTC OHLCV</text>
+
+                        <rect x="110" y="10" width="80" height="40" rx="6" fill="#141416" stroke="#3F3F46" strokeWidth="1.2" />
+                        <text x="150" y="29" fill="#F5F5F4" fontSize="8" fontFamily="'JetBrains Mono', monospace" textAnchor="middle" fontWeight="bold">TUNER_BAYES</text>
+                        <text x="150" y="39" fill="#A1A1AA" fontSize="7" fontFamily="'JetBrains Mono', monospace" textAnchor="middle">Optuna</text>
+
+                        <rect x="210" y="95" width="80" height="50" rx="6" fill="#141416" stroke="#C48452" strokeWidth="1.2" />
+                        <text x="250" y="118" fill="#F1C9A5" fontSize="8" fontFamily="'JetBrains Mono', monospace" textAnchor="middle" fontWeight="bold">ENSEMBLE_CORE</text>
+                        <text x="250" y="132" fill="#A1A1AA" fontSize="7" fontFamily="'JetBrains Mono', monospace" textAnchor="middle">LGBM + LSTM</text>
+
+                        <rect x="310" y="190" width="80" height="40" rx="6" fill="#141416" stroke="#3F3F46" strokeWidth="1.2" />
+                        <text x="350" y="209" fill="#F5F5F4" fontSize="8" fontFamily="'JetBrains Mono', monospace" textAnchor="middle" fontWeight="bold">STRATEGY_RUN</text>
+                        <text x="350" y="219" fill="#A1A1AA" fontSize="7" fontFamily="'JetBrains Mono', monospace" textAnchor="middle">Threshold Opt</text>
+
+                        <rect x="400" y="95" width="75" height="50" rx="6" fill="#141416" stroke="#C48452" strokeWidth="1.4" />
+                        <text x="437" y="118" fill="#F1C9A5" fontSize="8" fontFamily="'JetBrains Mono', monospace" textAnchor="middle" fontWeight="bold">RESULTS_OUT</text>
+                        <text x="437" y="132" fill="#10B981" fontSize="7" fontFamily="'JetBrains Mono', monospace" textAnchor="middle" fontWeight="bold">+30.1% / FOLD</text>
+                      </g>
+                    </svg>
+                  )}
+
+                  {activeProject.id === "agentic-rag" && (
+                    <svg width="100%" height="100%" viewBox="0 0 500 240" fill="none" className="z-10 w-full h-full max-h-[220px]">
+                      <path id="rag-path-line" d="M 40 120 L 120 120 L 190 60 L 260 60 L 330 120 L 260 180 L 190 180 L 120 120 L 190 60 L 330 120 L 460 120" fill="none" stroke="rgba(196,132,82,0.2)" strokeWidth="1.5" />
+
+                      <circle r="3.5" fill="#FFFFFF" className="brightness-150">
+                        <animateMotion dur="5s" repeatCount="indefinite" path="M 40 120 L 120 120 L 190 60 L 260 60 L 330 120 L 260 180 L 190 180 L 120 120 L 190 60 L 330 120 L 460 120" />
+                      </circle>
+                      <circle r="2.5" fill="#C48452">
+                        <animateMotion dur="4.2s" begin="1.8s" repeatCount="indefinite" path="M 120 120 L 190 60 L 330 120 L 260 180 L 190 180 L 120 120" />
+                      </circle>
+
+                      <g id="rag-modules">
+                        <rect x="25" y="95" width="70" height="50" rx="6" fill="#141416" stroke="#3F3F46" strokeWidth="1.2" />
+                        <text x="60" y="118" fill="#F5F5F4" fontSize="8" fontFamily="'JetBrains Mono', monospace" textAnchor="middle" fontWeight="bold">PDF_SOURCE</text>
+                        <text x="60" y="132" fill="#A1A1AA" fontSize="7" fontFamily="'JetBrains Mono', monospace" textAnchor="middle">Ingest Pipe</text>
+
+                        <rect x="135" y="10" width="80" height="40" rx="6" fill="#141416" stroke="#C48452" strokeWidth="1.2" />
+                        <text x="175" y="29" fill="#F1C9A5" fontSize="8" fontFamily="'JetBrains Mono', monospace" textAnchor="middle" fontWeight="bold">FAST_MCP_API</text>
+                        <text x="175" y="39" fill="#A1A1AA" fontSize="7" fontFamily="'JetBrains Mono', monospace" textAnchor="middle">Server Module</text>
+
+                        <rect x="250" y="10" width="80" height="40" rx="6" fill="#141416" stroke="#3F3F46" strokeWidth="1.2" />
+                        <text x="290" y="29" fill="#F5F5F4" fontSize="8" fontFamily="'JetBrains Mono', monospace" textAnchor="middle" fontWeight="bold">QDRANT_INDEX</text>
+                        <text x="290" y="39" fill="#A1A1AA" fontSize="7" fontFamily="'JetBrains Mono', monospace" textAnchor="middle">Vector Db</text>
+
+                        <rect x="170" y="190" width="90" height="40" rx="6" fill="#141416" stroke="#C48452" strokeWidth="1.2" />
+                        <text x="215" y="209" fill="#F1C9A5" fontSize="8" fontFamily="'JetBrains Mono', monospace" textAnchor="middle" fontWeight="bold">LANGGRAPH_CORE</text>
+                        <text x="215" y="219" fill="#A1A1AA" fontSize="7" fontFamily="'JetBrains Mono', monospace" textAnchor="middle">State Graph</text>
+
+                        <rect x="310" y="95" width="70" height="50" rx="6" fill="#141416" stroke="#3F3F46" strokeWidth="1.2" />
+                        <text x="345" y="118" fill="#F5F5F4" fontSize="8" fontFamily="'JetBrains Mono', monospace" textAnchor="middle" fontWeight="bold">LLM_REASON</text>
+                        <text x="345" y="132" fill="#A1A1AA" fontSize="7" fontFamily="'JetBrains Mono', monospace" textAnchor="middle">Inject Context</text>
+
+                        <rect x="405" y="95" width="70" height="50" rx="6" fill="#141416" stroke="#C48452" strokeWidth="1.4" />
+                        <text x="440" y="118" fill="#F1C9A5" fontSize="8" fontFamily="'JetBrains Mono', monospace" textAnchor="middle" fontWeight="bold">OUTPUT_CHAT</text>
+                        <text x="440" y="132" fill="#10B981" fontSize="7" fontFamily="'JetBrains Mono', monospace" textAnchor="middle" fontWeight="bold">Stream NL</text>
+                      </g>
+                    </svg>
+                  )}
+
+                  {activeProject.id === "teamsync" && (
+                    <svg width="100%" height="100%" viewBox="0 0 500 240" fill="none" className="z-10 w-full h-full max-h-[220px]">
+                      <path id="teamsync-loop" d="M 40 120 L 130 120 L 210 60 L 290 60 L 370 120 L 460 120 L 370 120 L 290 180 L 210 180 L 130 120" fill="none" stroke="rgba(196,132,82,0.2)" strokeWidth="1.5" />
+
+                      <circle r="3" fill="#FFFFFF" className="brightness-150">
+                        <animateMotion dur="3.5s" repeatCount="indefinite" path="M 40 120 L 130 120 L 210 60 L 290 60 L 370 120 L 460 120" />
+                      </circle>
+                      <circle r="2.5" fill="#C48452">
+                        <animateMotion dur="4.5s" begin="1s" repeatCount="indefinite" path="M 460 120 L 370 120 L 290 180 L 210 180 L 130 120 L 210 60 L 290 60 L 370 120" />
+                      </circle>
+
+                      <g id="teamsync-modules">
+                        <rect x="25" y="95" width="75" height="50" rx="6" fill="#141416" stroke="#C48452" strokeWidth="1.2" />
+                        <text x="62" y="118" fill="#F1C9A5" fontSize="8" fontFamily="'JetBrains Mono', monospace" textAnchor="middle" fontWeight="bold">FE_CLIENT</text>
+                        <text x="62" y="132" fill="#A1A1AA" fontSize="7" fontFamily="'JetBrains Mono', monospace" textAnchor="middle">React Zustand</text>
+
+                        <rect x="135" y="10" width="85" height="40" rx="6" fill="#141416" stroke="#3F3F46" strokeWidth="1.2" />
+                        <text x="177" y="29" fill="#F5F5F4" fontSize="8" fontFamily="'JetBrains Mono', monospace" textAnchor="middle" fontWeight="bold">WEBSOCKET_GATE</text>
+                        <text x="177" y="39" fill="#A1A1AA" fontSize="7" fontFamily="'JetBrains Mono', monospace" textAnchor="middle">Socket.IO</text>
+
+                        <rect x="245" y="10" width="80" height="40" rx="6" fill="#141416" stroke="#C48452" strokeWidth="1.2" />
+                        <text x="285" y="29" fill="#F1C9A5" fontSize="8" fontFamily="'JetBrains Mono', monospace" textAnchor="middle" fontWeight="bold">EXPRESS_CORE</text>
+                        <text x="285" y="39" fill="#A1A1AA" fontSize="7" fontFamily="'JetBrains Mono', monospace" textAnchor="middle">API Server</text>
+
+                        <rect x="195" y="190" width="90" height="40" rx="6" fill="#141416" stroke="#3F3F46" strokeWidth="1.2" />
+                        <text x="240" y="209" fill="#F5F5F4" fontSize="8" fontFamily="'JetBrains Mono', monospace" textAnchor="middle" fontWeight="bold">MONGODB_ATLAS</text>
+                        <text x="240" y="219" fill="#A1A1AA" fontSize="7" fontFamily="'JetBrains Mono', monospace" textAnchor="middle">Database State</text>
+
+                        <rect x="340" y="95" width="80" height="50" rx="6" fill="#141416" stroke="#C48452" strokeWidth="1.2" />
+                        <text x="380" y="118" fill="#F1C9A5" fontSize="8" fontFamily="'JetBrains Mono', monospace" textAnchor="middle" fontWeight="bold">IMAGEKIT_CDN</text>
+                        <text x="380" y="132" fill="#A1A1AA" fontSize="7" fontFamily="'JetBrains Mono', monospace" textAnchor="middle">Media Pipe</text>
+
+                        <rect x="430" y="105" width="45" height="30" rx="4" fill="#141416" stroke="#3F3F46" strokeWidth="1.2" />
+                        <text x="452" y="123" fill="#A1A1AA" fontSize="8" fontFamily="'JetBrains Mono', monospace" textAnchor="middle">ROOMS</text>
+                      </g>
+                    </svg>
+                  )}
+
+                  {activeProject.id === "classconnect" && (
+                    <svg width="100%" height="100%" viewBox="0 0 500 240" fill="none" className="z-10 w-full h-full max-h-[220px]">
+                      <path id="cc-straight-path" d="M 50 120 L 160 120 L 270 120 L 380 120 L 450 120" fill="none" stroke="rgba(196,132,82,0.2)" strokeWidth="1.5" />
+                      <path id="cc-loop-up" d="M 160 120 C 160 60, 270 60, 270 120" fill="none" stroke="rgba(196,132,82,0.12)" strokeWidth="1.2" />
+                      <path id="cc-loop-down" d="M 270 120 C 270 180, 380 180, 380 120" fill="none" stroke="rgba(196,132,82,0.12)" strokeWidth="1.2" />
+
+                      <circle r="3" fill="#FFFFFF">
+                        <animateMotion dur="3s" repeatCount="indefinite" path="M 50 120 L 160 120 C 160 60, 270 60, 270 120 L 380 120 L 450 120" />
+                      </circle>
+                      <circle r="2.5" fill="#C48452">
+                        <animateMotion dur="4s" begin="1s" repeatCount="indefinite" path="M 50 120 L 160 120 L 270 120 C 270 180, 380 180, 380 120 L 450 120" />
+                      </circle>
+
+                      <g id="cc-modules">
+                        <rect x="25" y="95" width="75" height="50" rx="6" fill="#141416" stroke="#C48452" strokeWidth="1.2" />
+                        <text x="62" y="118" fill="#F1C9A5" fontSize="8" fontFamily="'JetBrains Mono', monospace" textAnchor="middle" fontWeight="bold">PORTAL_UI</text>
+                        <text x="62" y="132" fill="#A1A1AA" fontSize="7" fontFamily="'JetBrains Mono', monospace" textAnchor="middle">React client</text>
+
+                        <rect x="135" y="95" width="75" height="50" rx="6" fill="#141416" stroke="#3F3F46" strokeWidth="1.2" />
+                        <text x="172" y="118" fill="#F5F5F4" fontSize="8" fontFamily="'JetBrains Mono', monospace" textAnchor="middle" fontWeight="bold">BCRYPT_AUTH</text>
+                        <text x="172" y="132" fill="#A1A1AA" fontSize="7" fontFamily="'JetBrains Mono', monospace" textAnchor="middle">JWT Verification</text>
+
+                        <rect x="245" y="95" width="80" height="50" rx="6" fill="#141416" stroke="#C48452" strokeWidth="1.2" />
+                        <text x="285" y="118" fill="#F1C9A5" fontSize="8" fontFamily="'JetBrains Mono', monospace" textAnchor="middle" fontWeight="bold">EXPRESS_ROUTER</text>
+                        <text x="285" y="132" fill="#A1A1AA" fontSize="7" fontFamily="'JetBrains Mono', monospace" textAnchor="middle">Payload Parser</text>
+
+                        <rect x="355" y="95" width="75" height="50" rx="6" fill="#141416" stroke="#3F3F46" strokeWidth="1.2" />
+                        <text x="392" y="118" fill="#F5F5F4" fontSize="8" fontFamily="'JetBrains Mono', monospace" textAnchor="middle" fontWeight="bold">MONGO_ENGINE</text>
+                        <text x="392" y="132" fill="#A1A1AA" fontSize="7" fontFamily="'JetBrains Mono', monospace" textAnchor="middle">Acad Schema</text>
+
+                        <circle cx="460" cy="120" r="10" fill="#141416" stroke="#C48452" strokeWidth="1.2" />
+                        <text x="460" y="123" fill="#C48452" fontSize="9" fontFamily="'JetBrains Mono', monospace" textAnchor="middle" fontWeight="bold">DB</text>
+                      </g>
+                    </svg>
+                  )}
+
+                  {activeProject.id === "salaryscout" && (
+                    <svg width="100%" height="100%" viewBox="0 0 500 240" fill="none" className="z-10 w-full h-full max-h-[220px]">
+                      <g id="salary-traces" stroke="rgba(196,132,82,0.12)" strokeWidth="1.2" strokeDasharray="3 3">
+                        <line x1="120" y1="120" x2="200" y2="60" />
+                        <line x1="120" y1="120" x2="200" y2="180" />
+                        <line x1="280" y1="60" x2="360" y2="120" />
+                        <line x1="280" y1="180" x2="360" y2="120" />
+                      </g>
+
+                      <path id="sal-path-top" d="M 45 120 L 120 120 L 200 60 L 280 60 L 360 120 L 450 120" fill="none" stroke="rgba(196,132,82,0.2)" strokeWidth="1.5" />
+                      <path id="sal-path-bot" d="M 45 120 L 120 120 L 200 180 L 280 180 L 360 120 L 450 120" fill="none" stroke="rgba(196,132,82,0.2)" strokeWidth="1.5" />
+
+                      <circle r="3.5" fill="#FFFFFF" className="brightness-150 shadow-2xl">
+                        <animateMotion dur="3.8s" repeatCount="indefinite" path="M 45 120 L 120 120 L 200 60 L 280 60 L 360 120 L 450 120" />
+                      </circle>
+                      <circle r="2.5" fill="#C48452">
+                        <animateMotion dur="4.2s" begin="1s" repeatCount="indefinite" path="M 45 120 L 120 120 L 200 180 L 280 180 L 360 120 L 450 120" />
+                      </circle>
+
+                      <g id="salary-modules">
+                        <rect x="25" y="95" width="75" height="50" rx="6" fill="#141416" stroke="#C48452" strokeWidth="1.2" />
+                        <text x="62" y="118" fill="#F1C9A5" fontSize="8" fontFamily="'JetBrains Mono', monospace" textAnchor="middle" fontWeight="bold">QUERY_FILTER</text>
+                        <text x="62" y="132" fill="#A1A1AA" fontSize="7" fontFamily="'JetBrains Mono', monospace" textAnchor="middle">Role / Level / Loc</text>
+
+                        <rect x="160" y="38" width="85" height="44" rx="6" fill="#141416" stroke="#3F3F46" strokeWidth="1.2" />
+                        <text x="202" y="58" fill="#F5F5F4" fontSize="8" fontFamily="'JetBrains Mono', monospace" textAnchor="middle" fontWeight="bold">MULTI_API_FEED</text>
+                        <text x="202" y="70" fill="#A1A1AA" fontSize="7" fontFamily="'JetBrains Mono', monospace" textAnchor="middle">Axios Ingestion</text>
+
+                        <rect x="160" y="158" width="85" height="44" rx="6" fill="#141416" stroke="#C48452" strokeWidth="1.2" />
+                        <text x="202" y="178" fill="#F1C9A5" fontSize="8" fontFamily="'JetBrains Mono', monospace" textAnchor="middle" fontWeight="bold">SALARY_ESTIMATE</text>
+                        <text x="202" y="190" fill="#A1A1AA" fontSize="7" fontFamily="'JetBrains Mono', monospace" textAnchor="middle">Schema Normalize</text>
+
+                        <rect x="265" y="95" width="80" height="50" rx="6" fill="#141416" stroke="#3F3F46" strokeWidth="1.2" />
+                        <text x="305" y="118" fill="#F5F5F4" fontSize="8" fontFamily="'JetBrains Mono', monospace" textAnchor="middle" fontWeight="bold">DYNAMIC_FEED</text>
+                        <text x="305" y="132" fill="#A1A1AA" fontSize="7" fontFamily="'JetBrains Mono', monospace" textAnchor="middle">shadcn + Motion</text>
+
+                        <rect x="375" y="95" width="85" height="50" rx="6" fill="#141416" stroke="#C48452" strokeWidth="1.4" />
+                        <text x="417" y="118" fill="#F1C9A5" fontSize="8" fontFamily="'JetBrains Mono', monospace" textAnchor="middle" fontWeight="bold">DIRECT_APPLY</text>
+                        <text x="417" y="132" fill="#10B981" fontSize="7" fontFamily="'JetBrains Mono', monospace" textAnchor="middle" fontWeight="bold">1-Step Out</text>
+                      </g>
+                    </svg>
+                  )}
                 </div>
 
                 {/* Performance telemetry Counters */}

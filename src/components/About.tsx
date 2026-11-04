@@ -67,7 +67,7 @@ export default function About() {
       label: "HELLO",
       text: (
         <>
-          Hello! I am a third-year{" "}
+          Hello! I am a Final-year{" "}
           <span className="text-white font-medium">Computer Systems Engineering Student</span> at{" "}
           <span className="text-white font-medium border-b border-[#C48452]/50 hover:border-[#C48452] pb-0.5 transition-colors duration-200">
             NED University

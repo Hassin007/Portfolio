@@ -5,8 +5,10 @@ export const certificationsData: Certification[] = [
     id: "ibm-agentic-ai-multiagent",
     title: "Agentic AI with LangGraph, CrewAI, AutoGen and BeeAI",
     issuer: "IBM",
-    issueDate: "Coursera Verified Credential",
-    credentialUrl: "https://coursera.org/share/e4e4aef687c9eea3c6324d5a815130ba",
+    issueDate: "Dec 17, 2025",
+    credentialUrl: "https://coursera.org/verify/SWQY7K04IV2L",
+    verifyUrl: "https://coursera.org/verify/SWQY7K04IV2L",
+    image: "/certificates/agentic-ai-langgraph-crewai.webp",
     badge: "IBM Professional Certification",
     skills: ["LangGraph", "CrewAI", "AutoGen", "BeeAI", "Multi-Agent Workflows"]
   },
@@ -14,8 +16,10 @@ export const certificationsData: Certification[] = [
     id: "ibm-agentic-ai-langchain",
     title: "Agentic AI with LangChain and LangGraph",
     issuer: "IBM",
-    issueDate: "Coursera Verified Credential",
-    credentialUrl: "https://coursera.org/share/0ab20f91cfc32acc73ac06119a49d3ae",
+    issueDate: "Dec 18, 2025",
+    credentialUrl: "https://coursera.org/verify/XN0E4DBPQLD9",
+    verifyUrl: "https://coursera.org/verify/XN0E4DBPQLD9",
+    image: "/certificates/agentic-ai-langchain-langgraph.webp",
     badge: "IBM Professional Certification",
     skills: ["LangChain", "LangGraph", "Agentic Reasoning", "Stateful Graphs", "Tool Execution"]
   }
