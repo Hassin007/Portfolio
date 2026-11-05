@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Github, Linkedin, Mail, ArrowDown, ArrowRight } from "lucide-react";
+import { Github, Linkedin, Mail, ArrowDown, ArrowRight, ExternalLink } from "lucide-react";
 import InteractiveDotGrid from "./InteractiveDotGrid";
 import Typewriter from "./Typewriter";
 
@@ -164,12 +164,15 @@ export default function Hero() {
               </a>
 
               {/* Instant Resume triggering matching secondary action */}
-              <button
-                onClick={() => window.print()}
-                className="w-max px-4 py-2 border border-[#3F3F46] hover:border-[#C48452] text-[11px] uppercase tracking-wider font-semibold text-[#A1A1AA] hover:text-[#F5F5F4] rounded transition-all duration-300"
+              <a
+                href="/CV/CV%20Hassin.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-max px-4 py-2 border border-[#3F3F46] hover:border-[#C48452] text-[11px] uppercase tracking-wider font-semibold text-[#A1A1AA] hover:text-[#F5F5F4] rounded transition-all duration-300 inline-flex items-center gap-1.5"
               >
-                Print CV Portfolio
-              </button>
+                <span>Print CV Portfolio</span>
+                <ExternalLink size={12} />
+              </a>
             </div>
           </div>
 
