@@ -134,7 +134,7 @@ export default function Footer() {
             transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
             className="font-mono text-[10px] sm:text-xs text-[#C48452] tracking-widest mt-4 font-medium uppercase"
           >
-            Computer Systems Engineering Student
+            Computer Systems Engineer
           </motion.p>
 
           {/* Links Row */}
