@@ -132,8 +132,6 @@ export default function Hero() {
               
               {/* Code/Info visual watermark bottom of image */}
               <div className="absolute bottom-4 left-4 font-mono text-[9px] text-[#A1A1AA]/80 leading-tight">
-                <span className="block text-[#C48452] font-semibold">// LATENCY_OK</span>
-                <span>SYS_ Karachi, PK</span>
               </div>
             </div>
           </div>
