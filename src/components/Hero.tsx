@@ -129,10 +129,6 @@ export default function Hero() {
               
               {/* Overlay golden mask highlights */}
               <div className="absolute inset-0 bg-gradient-to-t from-[#0B0B0C]/90 via-transparent to-transparent opacity-80" />
-              
-              {/* Code/Info visual watermark bottom of image */}
-              <div className="absolute bottom-4 left-4 font-mono text-[9px] text-[#A1A1AA]/80 leading-tight">
-              </div>
             </div>
           </div>
 
